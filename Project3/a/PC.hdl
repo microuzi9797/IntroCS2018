@@ -12,17 +12,17 @@
  */
 
 CHIP PC {
-    IN in[16],load,inc,reset;
-    OUT out[16];
+	IN in[16],load,inc,reset;
+	OUT out[16];
 
-    PARTS:
-    // Put your code here:
-    Inc16(in=pre,out=preplus);
-    Mux16(a=pre,b=preplus,sel=inc,out=incans);
+	PARTS:
+	// Put your code here:
+	Inc16(in = pre, out = preplus);
+	Mux16(a = pre, b = preplus, sel = inc, out = incans);
 
-    Mux16(a=incans,b=in,sel=load,out=loadans);
+	Mux16(a = incans, b = in, sel = load, out = loadans);
 
-    Mux16(a=loadans,b=false,sel=reset,out=ans);
+	Mux16(a = loadans, b = false, sel = reset, out = ans);
 
-    Register(in=ans,load=true,out=pre,out=out);
+	Register(in = ans, load = true, out = pre, out = out);
 }
